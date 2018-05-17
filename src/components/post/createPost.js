@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-class PostForm extends Component {
+class CreatePost extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const title = this.getTitle.value;
@@ -46,4 +46,4 @@ class PostForm extends Component {
         );
     }
 }
-export default connect()(PostForm);
+export default connect()(CreatePost);
