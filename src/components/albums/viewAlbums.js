@@ -3,48 +3,50 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { showAlbums } from '../../actions/albums';
 
-class ViewAlbums extends Component {
+import { Link } from 'react-router-dom';
 
-  componentWillMount() {
-    this.props.showAlbums();
-  }
-  renderList() {
-    return this.props.albums.map((user) => {
-      return (
-        <tr key={user.id}>
-          <td>{user.id}</td>
-          <td>{user.userId}</td>
-          <td>{user.title}</td>
-        </tr>
-      )
-    })
-  }
-    render() {
-      return (
-        <div > 
-          <h2>Lista de Albums</h2>
-          <table border='1'>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>ID Usuario</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            { this.renderList() }  
-            { console.log(this.props.albums)}
-          </tbody>
-        </table>
-        </div>
-      );
+import { Table, Icon, Divider } from 'antd';
+const { Column } = Table;
+
+class ViewAlbums extends Component {
+    componentWillMount() {
+        this.props.showAlbums();
     }
-  }
-  
-const mapStateToProps = state =>{
-  return {
-    albums: state.album.data
-  }
+    render() {
+        return (
+            <div>
+                <h2>Lista de Albums</h2>
+                <Table dataSource={this.props.albums}>
+                    <Column title="ID" dataIndex="id" key="id" />
+                    <Column title="Usuario" dataIndex="userId" key="user_id" />
+                    <Column title="Titulo" dataIndex="title" key="title" />
+
+                    <Column
+                        title="Action"
+                        key="action"
+                        render={(text, record) => (
+                            <span>
+                                <Link to={`/albums/${record.id}`}>
+                                    <Icon type="edit" />
+                                </Link>
+                                <Divider type="vertical" />
+                                <Link to={`/albums/${record.id}`}>
+                                    <Icon type="delete" />
+                                </Link>
+                            </span>
+                        )}
+                    />
+                </Table>
+            </div>
+        );
+    }
 }
 
-export default connect(mapStateToProps, {showAlbums})(ViewAlbums)
+const mapStateToProps = state => {
+    console.log(state);
+    return {
+        albums: state.album.data,
+    };
+};
+
+export default connect(mapStateToProps, { showAlbums })(ViewAlbums);

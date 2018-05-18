@@ -3,47 +3,61 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { showUsers } from '../actions/users';
 
-class Users extends Component {
+import { Table, Icon, Divider } from 'antd';
 
-  componentWillMount() {
-    this.props.showUsers();
-  }
-  renderUsersList() {
-    return this.props.users.map((user) => {
-      return (
-        <tr key={user.id}>
-          <td>{user.id}</td>
-          <td>{user.name}</td>
-          <td>{user.email}</td>
-        </tr>
-      )
-    })
-  }
-    render() {
-      return (
-        <div > 
-          <h2>Lista de usuarios</h2>
-          <table border='1'>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            { this.renderUsersList() }  
-          </tbody>
-        </table>
-        </div>
-      );
+const columns = [
+    {
+        title: 'ID',
+        dataIndex: 'id',
+        key: 'id',
+    },
+    {
+        title: 'Nombre',
+        dataIndex: 'name',
+        key: 'name',
+    },
+    {
+        title: 'Email',
+        dataIndex: 'email',
+        key: 'email',
+    },
+    {
+        title: 'Action',
+        key: 'action',
+        render: (text, record) => (
+            <span>
+                <a href="javascript:;">
+                    <Icon type="edit" />
+                </a>
+                <Divider type="vertical" />
+                <a href="javascript:;">
+                    <Icon type="delete" />
+                </a>
+                {/* <Divider type="vertical" /> */}
+                
+            </span>
+        ),
+    },
+];
+
+class Users extends Component {
+    componentWillMount() {
+        this.props.showUsers();
     }
-  }
-  
-const mapStateToProps = state =>{
-  return {
-    users: state.listUsers.data
-  }
+    render() {
+        return (
+            <div>
+                <h2>Lista de usuarios</h2>
+                <Table columns={columns} dataSource={this.props.users} />
+            </div>
+        );
+    }
 }
 
-export default connect(mapStateToProps, {showUsers})(Users)
+const mapStateToProps = state => {
+    return {
+        users: state.listUsers.data,
+    };
+};
+
+export default connect(mapStateToProps, { showUsers })(Users);
