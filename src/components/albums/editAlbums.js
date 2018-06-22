@@ -21,6 +21,7 @@ class EditAlbums extends Component {
     //         data: data,
     //     });
     // };
+
     render() {
         return (
             <div> Hola {this.props.match.params.id}</div>
@@ -57,4 +58,7 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { editAlbums })(EditAlbums);
+export default connect(
+    mapStateToProps,
+    { editAlbums },
+)(EditAlbums);

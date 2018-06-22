@@ -49,4 +49,7 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { showAlbums })(ViewAlbums);
+export default connect(
+    mapStateToProps,
+    { showAlbums },
+)(ViewAlbums);

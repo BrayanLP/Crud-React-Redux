@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
-// import logo from './logo.svg';
-
-// And Components
-
 import './App.css';
-// import CreatePost from './components/post/createPost';
-// import ViewPost from './components/post/viewPost';
+// And Components
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import ViewAlbums from './components/albums/viewAlbums';
-// import EditAlbums from './components/albums/editAlbums';
-// import PostsPage from './components/post/postPage';
-import Post from './components/post/Post';
-// import AllPost from './AllPost';
-import Users from './components/Users';
 
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import Users from './components/Users';
+import Todo from './components/todos';
+import Crud from './components/crud';
 // const { SubMenu } = Menu;
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 
 class App extends Component {
     render() {
@@ -34,9 +26,6 @@ class App extends Component {
                             }}
                             breakpoint="lg"
                             collapsedWidth="0"
-                            onCollapse={(collapsed, type) => {
-                                console.log(collapsed, type);
-                            }}
                         >
                             <div className="logo" />
 
@@ -55,6 +44,18 @@ class App extends Component {
                                     <Link to="/albums">
                                         <Icon type="book" />
                                         <span className="nav-text">Albums</span>
+                                    </Link>
+                                </Menu.Item>
+                                <Menu.Item key="tareas">
+                                    <Link to="/tareas">
+                                        <Icon type="check" />
+                                        <span className="nav-text">Tareas</span>
+                                    </Link>
+                                </Menu.Item>
+                                <Menu.Item key="crud">
+                                    <Link to="/crud">
+                                        <Icon type="check" />
+                                        <span className="nav-text">Crud</span>
                                     </Link>
                                 </Menu.Item>
                             </Menu>
@@ -77,17 +78,7 @@ class App extends Component {
                                         minHeight: 280,
                                     }}
                                 >
-                                    {/* <Router> */}
                                     <div>
-                                        {/* <ul>
-                                            <li>
-                                                <Link to="/">Users</Link>
-                                            </li>
-                                            <li>
-                                                <Link to="/albums">Albums</Link>
-                                            </li>
-                                        </ul> */}
-
                                         <Route
                                             exact
                                             path="/"
@@ -97,28 +88,17 @@ class App extends Component {
                                             path="/albums"
                                             component={ViewAlbums}
                                         />
-                                        <Post />
-                                        {/* <Route
-                                            path="/albums/:id"
-                                            component={EditAlbums}
-                                        /> */}
+                                        <Route
+                                            path="/tareas"
+                                            component={Todo}
+                                        />
+                                        <Route path="/crud" component={Crud} />
                                     </div>
-                                    {/* </Router> */}
-                                    {/* <Table
-                                    // rowSelection={rowSelection}
-                                    columns={columns}
-                                    dataSource={data}
-                                /> */}
                                 </Content>
                             </Layout>
                         </Layout>
                     </Layout>
                 </Router>
-                {/* <Users/> */}
-                {/* <CreatePost /> */}
-                {/* <ViewPost/> */}
-                {/* <ViewAlbums/> */}
-                {/* <EditPost /> */}
             </div>
         );
     }

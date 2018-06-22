@@ -8,16 +8,16 @@ const initialState = {
 
 export function postAlbum(state = initialState, action) {
     switch (action.type) {
-        case SHOW_ALBUMS:
-            return {
-                ...state,
-                items: action.payload,
-            };
-        case EDIT_ALBUMS:
-            return {
-                ...state,
-                item: action.payload,
-            };
+    case SHOW_ALBUMS:
+        return {
+            ...state,
+            items: action.payload,
+        };
+    case EDIT_ALBUMS:
+        return {
+            ...state,
+            item: action.payload,
+        };
         // const index = state.findIndex(post => post.id === action.post.id);
         // if (index > -1) {
         //     return state.map(post => {
@@ -27,7 +27,7 @@ export function postAlbum(state = initialState, action) {
         // } else {
         //     return [...state, action.post];
         // }
-        default:
-            return state;
+    default:
+        return state;
     }
 }

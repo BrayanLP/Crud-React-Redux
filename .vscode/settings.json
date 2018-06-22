@@ -1,2 +1,16 @@
 {
+    "workbench.colorTheme": "Material Theme High Contrast",
+    "workbench.iconTheme": "eq-material-theme-icons",
+    "prettier.eslintIntegration": true,
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "all",
+    "eslint.alwaysShowStatus": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.provideLintTask": true,
+    "explorer.confirmDelete": false,
+    "window.zoomLevel": 0,
+    "editor.autoIndent": true,
+    "editor.formatOnSave": true,
+    "explorer.confirmDragAndDrop": false,
+    "materialTheme.fixIconsRunning": false
 }

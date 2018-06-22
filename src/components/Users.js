@@ -26,15 +26,14 @@ const columns = [
         key: 'action',
         render: (text, record) => (
             <span>
-                <a href="javascript:;">
+                <a href="">
                     <Icon type="edit" />
                 </a>
                 <Divider type="vertical" />
-                <a href="javascript:;">
+                <a href="">
                     <Icon type="delete" />
                 </a>
                 {/* <Divider type="vertical" /> */}
-                
             </span>
         ),
     },
@@ -60,4 +59,7 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { showUsers })(Users);
+export default connect(
+    mapStateToProps,
+    { showUsers },
+)(Users);
