@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import CrudShow from './show';
-import CrudEdit from './edit';
+import EditCrud from './edit';
+import AddCrud from './add';
 
 class Crud extends Component {
     render() {
@@ -9,7 +10,8 @@ class Crud extends Component {
             <div>
                 <Switch>
                     <Route exact path="/crud" component={CrudShow} />
-                    <Route path="/crud/:id" component={CrudEdit} />
+                    <Route path="/crud/add" component={AddCrud} />
+                    <Route path="/crud/edit/:id" component={EditCrud} />
                 </Switch>
             </div>
         );

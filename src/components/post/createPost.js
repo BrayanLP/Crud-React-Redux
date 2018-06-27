@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class CreatePost extends Component {
     handleSubmit = e => {
@@ -10,14 +10,14 @@ class CreatePost extends Component {
             id: new Date(),
             title,
             message,
-            editing: false
+            editing: false,
         };
         this.props.dispatch({
-            type: "ADD_POST",
-            data
+            type: 'ADD_POST',
+            data,
         });
-        this.getTitle.value = "";
-        this.getMessage.value = "";
+        this.getTitle.value = '';
+        this.getMessage.value = '';
     };
     render() {
         return (

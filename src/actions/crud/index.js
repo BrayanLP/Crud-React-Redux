@@ -25,3 +25,22 @@ export const fecthCrudEdit = id => {
             );
     };
 };
+
+export const createCrud = postData => {
+    return dispatch => {
+        fetch(Api + `/posts/`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(postData),
+        })
+            .then(response => response.json())
+            .then(data =>
+                dispatch({
+                    type: 'NEW_CRUD',
+                    data: data,
+                }),
+            );
+    };
+};

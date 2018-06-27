@@ -13,6 +13,9 @@ class CrudShow extends Component {
         return (
             <div>
                 <h2>Lista de Albums</h2>
+                <Link to="/crud/add" type="primary" className="">
+                    Agregar
+                </Link>
                 <Table
                     // columns={columns}
                     dataSource={this.props.data}
@@ -30,7 +33,7 @@ class CrudShow extends Component {
                         rowKey={action => action}
                         render={(text, record) => (
                             <span>
-                                <Link to={`/crud/${record.id}`}>
+                                <Link to={`/crud/edit/${record.id}`}>
                                     <Icon type="edit" />
                                 </Link>
                                 <Divider type="vertical" />

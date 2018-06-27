@@ -11,11 +11,20 @@ export const showCrud = (state = [], action) => {
     }
 };
 
-export const editCrud = (state = [], action) => {
+export const editCrud = (state = {}, action) => {
     switch (action.type) {
     case 'FETCH_CRUD_EDIT':
         return action.data;
 
+    default:
+        return state;
+    }
+};
+
+export const addCrud = (state = {}, action) => {
+    switch (action.type) {
+    case 'NEW_CRUD':
+        return action.data;
     default:
         return state;
     }
