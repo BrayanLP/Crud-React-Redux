@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createCrud } from '../../actions/crud';
 import FormCrud from './form';
+import { message, Button } from 'antd';
 
 class AddCrud extends Component {
     constructor(props) {
@@ -40,6 +41,8 @@ class AddCrud extends Component {
         event.preventDefault();
         this.setState({ saving: true });
         this.props.dispatch(createCrud(this.state.response));
+        message.success('Agregado correctamente');
+        this.props.history.push('/crud');
         // setTimeout(this.setState({ saving: false }, 1000));
     }
     render() {
@@ -67,18 +70,5 @@ class AddCrud extends Component {
 AddCrud.propTypes = {
     // response: PropTypes.object.isRequired,
 };
-
-// const mapStateToProps = (state, ownProps) => {
-//     var res = {};
-//     if (state.addCrud) {
-//         res = state.addCrud;
-//         return { response: res };
-//     }
-// };
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         actions: bindActionCreators(crudActions, dispatch),
-//     };
-// };
 
 export default connect()(AddCrud);

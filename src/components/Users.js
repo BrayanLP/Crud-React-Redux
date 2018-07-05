@@ -1,5 +1,4 @@
-import React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { showUsers } from '../actions/users';
 
@@ -47,7 +46,7 @@ class Users extends Component {
         return (
             <div>
                 <h2>Lista de usuarios</h2>
-                <Table columns={columns} dataSource={this.props.users} />
+                {/* <Table columns={columns} dataSource={this.props.users} /> */}
             </div>
         );
     }
