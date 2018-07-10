@@ -1,52 +1,69 @@
 import React from 'react';
 import { Input } from 'antd';
 import PropTypes from 'prop-types';
-const TextInput = ({
-    // name,
+import styles from './input.css';
+const InputLp = ({
+    type,
+    name,
     label,
     onChange,
-    // placeholder,
     value,
-    // error,
-    // icon,
-    // type = 'text',
+    placeholder,
+    wrapperClass,
+    labelClass,
+    inputClass,
+    errorClass,
+    error,
+    required,
+    autoComplete,
 }) => {
-    let wrapperClass = 'form-group';
-    // if (error && error.length > 0) {
-    //     wrapperClass += ' has-error';
-    // }
     return (
-        <div className={wrapperClass}>
-            {/* <label htmlFor={name}>{label}</label>
-            <div className="field">
-                <input
-                    type={type}
-                    name={name}
-                    className="form-control"
-                    placeholder={placeholder}
-                    value={value}
-                    onChange={this.onChangeUserName}
-                />
-                {error && <div className="alert alert-danger">{error}</div>}
-            </div> */}
-            <Input
-                placeholder={label}
-                // prefix={<Icon type={icon} />}
-                value={value}
+        <div
+            className={
+                wrapperClass ? 'form-group-lp ' + wrapperClass : 'form-group-lp'
+            }
+        >
+            {label && <label className={labelClass}>{label}</label>}
+            <input
+                type={type}
+                name={name}
+                id={name}
+                required={required ? required : false}
+                className={
+                    inputClass
+                        ? 'form-control-lp ' + inputClass
+                        : 'form-control-lp'
+                }
+                placeholder={placeholder}
+                value={value ? value : ''}
                 onChange={onChange}
+                autoComplete={autoComplete ? autoComplete : 'off'}
             />
+            {required && (
+                <span
+                    className={
+                        errorClass
+                            ? 'invalid-feedback hide ' + errorClass
+                            : 'invalid-feedback hide'
+                    }
+                >
+                    {error ? error : 'required field'}
+                </span>
+            )}
         </div>
     );
 };
 
-TextInput.propTypes = {
-    // name: PropTypes.string.isRequired,
+InputLp.propTypes = {
+    name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    // onChange: PropTypes.func.isRequired,
-    // placeholder: PropTypes.string,
-    value: PropTypes.string,
-    // icon: PropTypes.string,
-    // error: PropTypes.string,
+    type: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string,
+    autoComplete: PropTypes.string,
+    icon: PropTypes.string,
+    error: PropTypes.string,
+    // value: PropTypes.,
 };
 
-export default TextInput;
+export default InputLp;

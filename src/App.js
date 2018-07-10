@@ -8,6 +8,7 @@ import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import Users from './components/Users';
 import Todo from './components/todos';
 import Crud from './components/crud';
+import Placeholder from './components/placeholder';
 // const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
@@ -93,6 +94,10 @@ class App extends Component {
                                             component={Todo}
                                         />
                                         <Route path="/crud" component={Crud} />
+                                        <Route
+                                            path="/placeholder"
+                                            component={Placeholder}
+                                        />
                                     </div>
                                 </Content>
                             </Layout>

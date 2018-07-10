@@ -1,0 +1,64 @@
+.form-group-lp {
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+}
+.form-group-lp label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+.form-control-lp {
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    color: #495057;
+    display: block;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0.375rem 0.75rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    outline: none;
+    width: 100%;
+}
+.form-control-lp:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.form-control-lp.is-valid {
+    border-color: #28a745;
+}
+.form-control-lp.is-invalid {
+    border-color: #dc3545;
+}
+.form-control-lp.is-invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+.form-control-lp.is-valid:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+.form-control-lp.is-invalid ~ .invalid-feedback,
+.form-control-lp.is-valid ~ .invalid-feedback {
+    display: block;
+}
+.valid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #28a745;
+    font-size: 13px;
+}
+.invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545;
+    font-size: 13px;
+}
+.hide {
+    display: none;
+}
