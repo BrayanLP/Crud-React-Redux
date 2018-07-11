@@ -44,3 +44,22 @@ export const createCrud = postData => {
             );
     };
 };
+
+export const updateCrud = (data, id) => {
+    return dispatch => {
+        fetch(Api + `/posts/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => response.json())
+            .then(data =>
+                dispatch({
+                    type: 'UPDATE_CRUD',
+                    data: data,
+                }),
+            );
+    };
+};

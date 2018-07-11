@@ -29,3 +29,12 @@ export const addCrud = (state = {}, action) => {
         return state;
     }
 };
+
+export const updateCrud = (state = {}, action) => {
+    switch (action.type) {
+    case 'UPDATE_CRUD':
+        return action.data;
+    default:
+        return state;
+    }
+};

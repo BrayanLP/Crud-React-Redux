@@ -21,6 +21,9 @@
     outline: none;
     width: 100%;
 }
+.form-control-lp:disabled {
+    cursor: no-drop;
+}
 .form-control-lp:focus {
     border-color: #80bdff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);

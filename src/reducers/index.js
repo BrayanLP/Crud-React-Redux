@@ -5,7 +5,7 @@ import { showUsers } from './users';
 
 import todos from './todos/todos';
 import visibilityFilter from './todos/visibilityFilter';
-import { showCrud, editCrud, addCrud } from './crud';
+import { showCrud, editCrud, addCrud, updateCrud } from './crud';
 
 const rootReducer = combineReducers({
     listUsers: showUsers,
@@ -16,6 +16,7 @@ const rootReducer = combineReducers({
     showCrud,
     editCrud,
     addCrud,
+    updateCrud,
 });
 
 export default rootReducer;
