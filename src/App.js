@@ -35,7 +35,7 @@ class App extends Component {
                                 mode="inline"
                                 defaultSelectedKeys={['Users']}
                             >
-                                <Menu.Item key="Users">
+                                {/* <Menu.Item key="Users">
                                     <Link to="/">
                                         <Icon type="user" />
                                         <span className="nav-text">Users</span>
@@ -52,9 +52,9 @@ class App extends Component {
                                         <Icon type="check" />
                                         <span className="nav-text">Tareas</span>
                                     </Link>
-                                </Menu.Item>
+                                </Menu.Item> */}
                                 <Menu.Item key="crud">
-                                    <Link to="/crud">
+                                    <Link to="/">
                                         <Icon type="check" />
                                         <span className="nav-text">Crud</span>
                                     </Link>
@@ -80,11 +80,7 @@ class App extends Component {
                                     }}
                                 >
                                     <div>
-                                        <Route
-                                            exact
-                                            path="/"
-                                            component={Users}
-                                        />
+                                        <Route path="/user" component={Users} />
                                         <Route
                                             path="/albums"
                                             component={ViewAlbums}
@@ -94,8 +90,9 @@ class App extends Component {
                                             component={Todo}
                                         />
                                         <Route path="/crud" component={Crud} />
+
                                         <Route
-                                            path="/placeholder"
+                                            path="/"
                                             component={Placeholder}
                                         />
                                     </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fecthCrud } from '../../actions/crud';
-import { Table, Divider, Icon } from 'antd';
+import { Table, Divider, Icon, Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { TextInput } from 'react-component-input-lp';
 import { Field, reduxForm } from 'redux-form/immutable';
@@ -15,13 +15,10 @@ class CrudShow extends Component {
         return (
             <div>
                 <h2>Lista de Albums</h2>
-                <Link to="/crud/add" type="primary" className="">
-                    Agregar
+                <Link to="/add" type="primary" className="">
+                    <Button type="primary">Agregar</Button>
                 </Link>
-                <Table
-                    // columns={columns}
-                    dataSource={this.props.data}
-                >
+                <Table dataSource={this.props.data}>
                     <Column tit le="ID" dataIndex="id" key="id" />
 
                     <Column title="Title" dataIndex="title" rowKey="title" />
@@ -35,11 +32,11 @@ class CrudShow extends Component {
                         rowKey={action => action}
                         render={(text, record) => (
                             <span>
-                                <Link to={`/crud/edit/${record.id}`}>
+                                <Link to={`/edit/${record.id}`}>
                                     <Icon type="edit" />
                                 </Link>
                                 <Divider type="vertical" />
-                                <Link to={`/crud/${record.id}`}>
+                                <Link to={`/${record.id}`}>
                                     <Icon type="delete" />
                                 </Link>
                             </span>
@@ -58,7 +55,8 @@ const mapStateToProps = state => {
         };
         Object.defineProperty(obj, id, config);
     };
-    const res = state.showCrud.data;
+    console.log(state);
+    const res = state.reducer.showCrud.data;
     if (res) {
         const addAttr = res =>
             res.map(child => {
@@ -78,11 +76,6 @@ function validate(values) {
 
     return errors;
 }
-
-// const ConnectedComponent = reduxForm({
-//     form: 'WhoisDomain',
-//     validate,
-// })();
 
 export default connect(
     mapStateToProps,

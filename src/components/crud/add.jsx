@@ -43,19 +43,11 @@ class AddCrud extends Component {
         this.props.dispatch(createCrud(this.state.response));
         message.success('Agregado correctamente');
         this.props.history.push('/crud');
-        // setTimeout(this.setState({ saving: false }, 1000));
     }
     render() {
         return (
             <div>
                 <h2>Agregar CRUD</h2>
-                {/* <input
-                    type="text"
-                    name="body"
-                    value={this.state.response.body}
-                    onChange={this.onChange}
-                /> */}
-                {/* {console.log(this.state.response)} */}
                 <FormCrud
                     response={this.state.response}
                     onSave={this.btnSave}

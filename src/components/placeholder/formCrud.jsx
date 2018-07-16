@@ -3,40 +3,54 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { SubmissionError } from 'redux-form';
 import { fecthCrudEdit, createCrud, updateCrud } from '../../actions/crud';
-// import TextInput from '../input/index';
-import FormCrud from './form';
+import { message } from 'antd';
+import FormComponent from './formComponent';
 
-class EditCrud extends Component {
+class FormCrud extends Component {
     componentWillMount() {
-        this.props.fecthCrudEdit(this.props.match.params.id);
+        console.log(this.props.match.params.id);
+        let id = this.props.match.params.id;
+        if (id) {
+            this.props.fecthCrudEdit(this.props.match.params.id);
+        }
     }
     submit = values => {
+        values.id = Number(values.id);
+        values.userId = Number(values.userId);
+        console.log(values);
         if (!values.id) {
+            console.log('estoy agregando');
+            message.success('Creado Correctamente');
+            this.props.history.push('/');
             return this.props.createCrud(values);
         } else {
+            message.success('Actualizado Correctamente');
+            this.props.history.push('/');
             return this.props.updateCrud(values, values.id);
         }
     };
     render() {
         return (
             <div>
-                <h2>Editando CRUD</h2>
-                <FormCrud
-                    // detalle={this.props.initialValues}
+                <FormComponent
                     initialValues={this.props.initialValues}
                     onSubmit={this.submit}
+                    // nameButton="Actualizar"
+                    // titleForm="Editar Placeholder"
                 />
             </div>
         );
     }
 }
 
-EditCrud.propTypes = {
+FormCrud.propTypes = {
     initialValues: PropTypes.object,
+    // nameButton: PropTypes.string,
+    // titleForm: PropTypes.string,
 };
 
 const mapStateToProps = state => {
-    // console.log(state);
+    console.log(state);
     return {
         initialValues: state.reducer.editCrud,
     };
@@ -45,4 +59,4 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps,
     { fecthCrudEdit, createCrud, updateCrud },
-)(EditCrud);
+)(FormCrud);
